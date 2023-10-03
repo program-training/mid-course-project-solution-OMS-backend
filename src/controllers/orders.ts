@@ -5,7 +5,7 @@ import {
   getOrdersByUserId,
   updateOrderById,
 } from "../Dal/orders.js";
-import { checkOrder } from "../BL/orders.js";
+import { checkOrder, removeFromInventory } from "../BL/orders.js";
 
 export const getAllOrders = async (req: Request, res: Response) => {
   const orders = await getOrders();
@@ -23,6 +23,11 @@ export const addNewOrder = async (req: Request, res: Response) => {
   const ERPResponse = await checkOrder(order);
   if (ERPResponse.cause) res.status(500).send(ERPResponse.cause);
   else {
+    try {
+      await removeFromInventory(order);
+    } catch (error) {
+      res.status(500).send('colud not get products from enventory');
+    }
     await addOrder(order);
     res.status(201).send(order);
   }
