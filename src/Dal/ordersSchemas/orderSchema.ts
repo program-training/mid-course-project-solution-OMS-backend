@@ -1,9 +1,6 @@
 import { Schema, model } from "mongoose";
 import { Product, ProductSchema } from "./productSchema.js";
-import {
-  ShippingDetails,
-  ShippingDetailsSchema,
-} from "./shippingDetailsSchema.js";
+import { ShippingDetails, ShippingDetailsSchema} from "./shippingDetailsSchema.js";
 
 export interface Order {
   cartItems: Product[];
