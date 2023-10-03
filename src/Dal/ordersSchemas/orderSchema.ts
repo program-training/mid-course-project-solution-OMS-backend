@@ -8,7 +8,6 @@ export interface Order {
   status: string;
   Price: number;
   shippingDetails: ShippingDetails;
-  userId:number;
 }
 interface OrderDocument extends Order, Document {}
 const OrderSchema = new Schema<OrderDocument>({
@@ -27,10 +26,6 @@ const OrderSchema = new Schema<OrderDocument>({
   Price: {
     type: Number,
     required: true,
-  },
-  userId:{
-    type:Number,
-    required:true
   },
   shippingDetails: {
     type: ShippingDetailsSchema,

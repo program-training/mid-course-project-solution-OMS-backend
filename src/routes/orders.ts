@@ -9,4 +9,4 @@ ordersRouter.get('/:userId',getOrdersByUser);
 
 ordersRouter.post('/',addNewOrder);
 
-ordersRouter.put('/orderId',updateOrder);
+ordersRouter.put('/:orderId',updateOrder);

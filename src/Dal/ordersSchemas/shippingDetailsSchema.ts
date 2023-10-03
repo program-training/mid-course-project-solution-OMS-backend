@@ -4,6 +4,7 @@ export interface ShippingDetails {
   address: string;
   contactNumber: string;
   orderType: string;
+  userId:number
 }
 
 interface ShippingDetailsDocument extends Document, ShippingDetails {}
@@ -21,4 +22,8 @@ export const ShippingDetailsSchema = new Schema<ShippingDetailsDocument>({
     type: String,
     required: true,
   },
+  userId:{
+    type:Number,
+    required:true
+  }
 });
