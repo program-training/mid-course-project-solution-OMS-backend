@@ -18,7 +18,11 @@ export const deleteUser = async (id) => {
 export const validateUser = async (email, password) => {
     const { rows } = await pool.query(`SELECT * 
          FROM admin 
-         WHERE email = $1 AND password = $2
-         RETURNING *`, [email, password]);
+         WHERE email = $1 AND password = $2`, [email, password]);
     return !!rows.length;
+};
+export const getUsers = async () => {
+    const { rows } = await pool.query(`SELECT * 
+     FROM admin `);
+    return rows;
 };

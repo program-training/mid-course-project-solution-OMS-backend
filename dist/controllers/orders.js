@@ -1,4 +1,4 @@
-import { addOrder, getOrders, getOrdersByUserId, updateOrderById } from "../Dal/orders.js";
+import { addOrder, getOrders, getOrdersByUserId, updateOrderById, } from "../Dal/orders.js";
 import { checkOrder } from "../BL/orders.js";
 export const getAllOrders = async (req, res) => {
     const orders = await getOrders();
@@ -18,6 +18,8 @@ export const addNewOrder = async (req, res) => {
         await addOrder(order);
         res.status(201).send(order);
     }
+    // const savedOrder = await addOrder(order);
+    // res.status(201).send(savedOrder);
 };
 export const updateOrder = async (req, res) => {
     const { orderId } = req.params;

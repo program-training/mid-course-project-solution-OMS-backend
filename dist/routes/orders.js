@@ -4,4 +4,4 @@ export const ordersRouter = Router();
 ordersRouter.get('/', getAllOrders);
 ordersRouter.get('/:userId', getOrdersByUser);
 ordersRouter.post('/', addNewOrder);
-ordersRouter.put('/orderId', updateOrder);
+ordersRouter.put('/:orderId', updateOrder);

@@ -11,10 +11,11 @@ export const updateOrderById = async (orderId, updatedOrder) => {
     return updated;
 };
 export const getOrders = async () => {
-    const orders = await OrderModel.find({});
+    const orders = await OrderModel.find();
+    console.log(orders);
     return orders;
 };
 export const getOrdersByUserId = async (userId) => {
-    const orders = await OrderModel.find({ userId: userId });
+    const orders = await OrderModel.find({ 'shippingDetails.userId': userId });
     return orders;
 };
