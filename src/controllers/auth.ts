@@ -4,9 +4,9 @@ import { validateToken as validateTokenBL } from "../BL/auth.js";
 
 
 export const validateToken = async (req:Request,res:Response, next:NextFunction) =>{
-    const token : string = req.headers['Authorization'] as string;
-    if(!token || !validateTokenBL(token)) res.status(400).send('invalid token');
-    return next();
+    const token : string = req.headers['authorization'] as string;
+    if(!token || !(await validateTokenBL(token))) res.status(400).send('invalid token');
+    else return next();
 }
 
 export const validateAdminToken = async (req:Request, res:Response,next:NextFunction) =>{
