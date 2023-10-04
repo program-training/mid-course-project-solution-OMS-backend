@@ -8,4 +8,4 @@ usersRouter.post('/',validateAdminToken,register);
 
 usersRouter.post('/auth/login',login);
 
-usersRouter.get('/',validateAdminToken,getAllUsers);
+usersRouter.get('/',getAllUsers);
