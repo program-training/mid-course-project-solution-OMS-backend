@@ -10,6 +10,7 @@ dotenv.config();
 // }
 
 export const removeFromInventory = async (order:Order) =>{
-    const response = await axios.post(`${process.env.API_GATEWAY_URL!}/api/updateInventory`,order);
+    const url =`${process.env.API_GATEWAY_URL!}/api/shop_inventory/updateInventory`; 
+    const response = await axios.post(url,order);
     return response.data;
 }

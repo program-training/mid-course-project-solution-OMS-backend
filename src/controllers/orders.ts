@@ -23,10 +23,16 @@ export const addNewOrder = async (req: Request, res: Response) => {
     try {
       await removeFromInventory(order);
     } catch (error) {
+      console.log(error);
       res.status(500).send('colud not get products from enventory');
     }
-    await addOrder(order);
+    try{
+      await addOrder(order);
     res.status(201).send(order);
+    }
+    catch(err){
+      console.log(err);
+    }
   // const savedOrder = await addOrder(order);
   // res.status(201).send(savedOrder);
 };

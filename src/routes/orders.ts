@@ -4,9 +4,9 @@ import { validateToken } from "../controllers/auth.js";
 
 export const ordersRouter = Router();
 
-ordersRouter.get('/',validateToken,getAllOrders);
+ordersRouter.get('/',getAllOrders);
 
-ordersRouter.get('/:userId',validateToken,getOrdersByUser);
+ordersRouter.get('/:userId',getOrdersByUser);
 
 ordersRouter.post('/',addNewOrder);
 
