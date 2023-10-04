@@ -1,7 +1,7 @@
 import axios from "axios";
-import { Order } from "../Dal/ordersSchemas/orderSchema";
+import { Order } from "../Dal/ordersSchemas/orderSchema.js";
 import * as dotenv from 'dotenv';
-
+dotenv.config();
 
 dotenv.config();
 export const checkOrder = async (order:Order) =>{

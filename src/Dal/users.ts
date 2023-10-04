@@ -35,14 +35,16 @@ export const deleteUser = async (id: number) => {
   return rows[0] as User;
 };
 
-export const validateUser = async (email: string, password:string) =>{
+export const getUser = async (searchEmail: string) =>{
     const { rows } = await pool.query(
         `SELECT * 
          FROM admin 
-         WHERE email = $1 AND password = $2`,
-        [email, password]
+         WHERE email = $1`,
+        [searchEmail]
       );
-      return !!rows.length
+      if(!rows.length) return null;
+      const user: User = {email:rows[0].email, password: rows[0].password, isAdmin: rows[0].isadmin};
+      return user;
 }
 
 export const getUsers = async () =>{
