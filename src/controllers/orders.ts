@@ -5,7 +5,7 @@ import {
   getOrdersByUserId,
   updateOrderById,
 } from "../Dal/orders.js";
-import { checkOrder, removeFromInventory } from "../BL/orders.js";
+import { removeFromInventory } from "../BL/orders.js";
 
 export const getAllOrders = async (req: Request, res: Response) => {
   const orders = await getOrders();
@@ -20,9 +20,6 @@ export const getOrdersByUser = async (req: Request, res: Response) => {
 
 export const addNewOrder = async (req: Request, res: Response) => {
   const { order } = req.body;
-  const ERPResponse = await checkOrder(order);
-  if (ERPResponse.cause) res.status(500).send(ERPResponse.cause);
-  else {
     try {
       await removeFromInventory(order);
     } catch (error) {
@@ -30,7 +27,6 @@ export const addNewOrder = async (req: Request, res: Response) => {
     }
     await addOrder(order);
     res.status(201).send(order);
-  }
   // const savedOrder = await addOrder(order);
   // res.status(201).send(savedOrder);
 };
