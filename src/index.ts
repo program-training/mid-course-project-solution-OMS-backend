@@ -4,6 +4,7 @@ import { connectToMongoDb, connectToPostgreSQL, pool } from "./Dal/connections.j
 import { ordersRouter } from "./routes/orders.js";
 import { usersRouter } from "./routes/users.js";
 import morgan from "morgan";
+import { errorHandler } from "./controllers/errorHandeling.js";
 
 const app = express();
 app.use(cors());
@@ -12,6 +13,7 @@ app.use(morgan('tiny'));
 
 app.use('/api/orders',ordersRouter);
 app.use('/api/users',usersRouter);
+app.use(errorHandler);
 
 const PORT = 8070;
 

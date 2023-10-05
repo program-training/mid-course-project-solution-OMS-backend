@@ -11,6 +11,7 @@ dotenv.config();
 
 export const removeFromInventory = async (order:Order) =>{
     const url =`${process.env.API_GATEWAY_URL!}/api/shop_inventory/updateInventory`; 
-    const response = await axios.post(url,order);
+    // const url = 'https://erp-uufp.onrender.com/api/shop_inventory/updateInventory';
+    const response = await axios.post(url,{order});
     return response.data;
 }
